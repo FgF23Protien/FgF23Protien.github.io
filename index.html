@@ -1,0 +1,137 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>District 10</title>
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      background: black;
+      overflow: hidden;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      transition: opacity 1s ease;
+      opacity: 1;
+    }
+
+    body.fade-out {
+      opacity: 0;
+    }
+
+    .split-screen {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex;
+    }
+
+    .half {
+      width: 50%;
+      height: 100%;
+      background-color: #232323;
+      z-index: 1;
+      transition: transform 2s ease;
+    }
+
+    .left {
+      transform-origin: right center;
+    }
+
+    .right {
+      transform-origin: left center;
+    }
+
+    .content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      text-align: center;
+      z-index: 2;
+      opacity: 0;
+      animation: fadeInText 2s ease 2s forwards;
+    }
+
+    h1 {
+      font-size: 3rem;
+      text-shadow: 0 0 10px white, 0 0 20px white;
+      margin-bottom: 20px;
+    }
+
+    .enter-button {
+      padding: 12px 28px;
+      background: transparent;
+      border: 2px solid white;
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+      opacity: 0;
+      border-radius: 12px;
+      animation: fadeInButton 1.5s ease 3s forwards;
+      box-shadow: 0 0 10px white, 0 0 20px white inset;
+      transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+      display: inline-block;
+      width: auto;
+    }
+
+    .enter-button:hover {
+      background: white;
+      color: black;
+      box-shadow: 0 0 20px white, 0 0 30px white;
+    }
+
+    @keyframes fadeInText {
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeInButton {
+      to {
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body onload="splitOpen()">
+  <div class="split-screen">
+    <div class="half left" id="left-pane"></div>
+    <div class="half right" id="right-pane"></div>
+    <div class="content">
+      <div id="text-container">
+        <h1 id="title">District 10</h1>
+        <button class="enter-button" id="enterBtn" onclick="fadeOutAndRedirect()">Enter</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function splitOpen() {
+      document.getElementById('left-pane').style.transform = 'translateX(-100%)';
+      document.getElementById('right-pane').style.transform = 'translateX(100%)';
+
+      // Match button width to h1
+      const title = document.getElementById('title');
+      const btn = document.getElementById('enterBtn');
+      setTimeout(() => {
+        btn.style.width = title.offsetWidth + 'px';
+      }, 2500);
+    }
+
+    function fadeOutAndRedirect() {
+      document.body.classList.add('fade-out');
+      setTimeout(() => {
+        window.location.href = 'password.html';
+      }, 1000);
+    }
+  </script>
+</body>
+</html>
