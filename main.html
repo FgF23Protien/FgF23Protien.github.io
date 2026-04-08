@@ -1,0 +1,198 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>District 10</title>
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <style>
+    :root {
+      --primary: #7d6f67;
+      --accent: #DA70D6;
+      --glass-bg: rgba(255, 255, 255, 0.1);
+      --glass-border: rgba(255, 255, 255, 0.2);
+      --white: #ffffff;
+      --black-transparent: rgba(0, 0, 0, 0.3);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: url('https://i.pinimg.com/originals/e0/d3/ac/e0d3ac7b7bfd590a87619fc5bc0396f1.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: var(--white);
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--black-transparent);
+      z-index: 0;
+    }
+
+    body {
+      position: relative;
+      z-index: 1;
+      padding: 120px 40px 40px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+    }
+
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: var(--black-transparent);
+      backdrop-filter: blur(10px);
+      z-index: 100;
+      padding: 10px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-sizing: border-box;
+      border-bottom: 1px solid var(--glass-border);
+    }
+
+    .navbar .logo img {
+      height: 40px;
+      width: auto;
+      display: block;
+    }
+
+    .navbar .nav-links {
+      display: flex;
+      gap: 25px;
+    }
+
+    .navbar .nav-links a {
+      color: var(--white);
+      text-decoration: none;
+      font-size: 1.1rem;
+      font-weight: bold;
+      transition: color 0.3s ease;
+      white-space: nowrap;
+    }
+
+    .navbar .nav-links a:hover,
+    .navbar .nav-links a:focus {
+      color: var(--accent);
+      outline: none;
+    }
+
+    h1 {
+      font-size: 3.5rem;
+      font-weight: normal;
+      color: var(--white);
+      text-shadow:
+        0 0 8px var(--white),
+        0 0 16px var(--white),
+        0 0 24px var(--white);
+      filter: brightness(1.6);
+      margin-bottom: 60px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .button-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 30px;
+      max-width: 600px;
+      width: 100%;
+    }
+
+    .nav-button {
+      padding: 16px 24px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: var(--white);
+      text-decoration: none;
+      border: 2px solid var(--glass-border);
+      border-radius: 16px;
+      background: var(--glass-bg);
+      backdrop-filter: blur(12px);
+      text-shadow: 0 0 6px white;
+      box-shadow: 0 0 10px white inset;
+      transition: all 0.3s ease;
+      display: inline-block;
+      z-index: 1;
+    }
+
+    .nav-button:hover,
+    .nav-button:focus {
+      background: white;
+      color: black;
+      box-shadow: 0 0 25px white, 0 0 35px white;
+      outline: none;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 140px 20px 20px;
+      }
+
+      .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px 20px;
+        gap: 10px;
+      }
+
+      .navbar .nav-links {
+        flex-direction: column;
+        gap: 12px;
+        width: 100%;
+      }
+
+      .navbar .nav-links a {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">
+      <img src="favicon.png" alt="District 10 Logo" />
+    </div>
+    <div class="nav-links">
+      <a href="main.html">Home</a>
+      <a href="aboutus.html">Members</a>
+      <a href="https://docs.google.com/spreadsheets/d/1jXAAM4CBdqVFGm04pbRnngSnv9gcO6AkKsJNU_UiyoU/edit?gid=964261883#gid=964261883" target="_blank" rel="noopener noreferrer">Leaderboard</a>
+      <a href="stats.html">Stats</a>
+      <a href="escape.html">Escape</a>
+    </div>
+  </nav>
+
+  <h1>“The important thing is to never stop questioning.”<br/>
+  <strong>— Albert Einstein</strong></h1>
+
+  <div class="button-container">
+    <a class="nav-button" href="aboutus.html">Members</a>
+    <a class="nav-button" href="https://docs.google.com/spreadsheets/d/1jXAAM4CBdqVFGm04pbRnngSnv9gcO6AkKsJNU_UiyoU/edit?gid=964261883#gid=964261883" target="_blank" rel="noopener noreferrer">Leaderboard</a>
+    <a class="nav-button" href="stats.html">Stats</a>
+    <a class="nav-button" href="eggs.html">Easter Eggs</a>
+    <a class="nav-button" href="escape.html">Escape</a>
+    <a class="nav-button" href="game.html">OmJay Run</a>
+    <a class="nav-button" href="battle.html">Emir vs. Anahitaa</a>
+    <a class="nav-button" href="test.html">Test</a>
+    <a class="nav-button" href="https://youtu.be/dQw4w9WgXcQ?si=b1Bt0Xi-JpeL1OJb">Funny Botton 1</a>
+    <a class="nav-button" href="">Funny Botton 2</a>
+    <a class="nav-button" href="https://youtu.be/dQw4w9WgXcQ?si=b1Bt0Xi-JpeL1OJb">Funny Botton 3</a>
+  </div>
+</body>
+</html>
