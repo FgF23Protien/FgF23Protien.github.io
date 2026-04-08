@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Archives of TASS</title>
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <style>
+    :root {
+      --primary: #7d6f67;
+      --accent: #DA70D6;
+      --glass-bg: rgba(255, 255, 255, 0.1);
+      --glass-border: rgba(255, 255, 255, 0.2);
+      --white: #ffffff;
+      --black-transparent: rgba(0, 0, 0, 0.3);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: url('https://www.thisiscolossal.com/wp-content/uploads/2024/02/mayer-1.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: var(--white);
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--black-transparent);
+      z-index: 0;
+    }
+
+    body {
+      position: relative;
+      z-index: 1;
+      padding: 120px 40px 40px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+    }
+
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: var(--black-transparent);
+      backdrop-filter: blur(10px);
+      z-index: 100;
+      padding: 10px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-sizing: border-box;
+      border-bottom: 1px solid var(--glass-border);
+    }
+
+    .navbar .logo img {
+      height: 40px;
+      width: auto;
+      display: block;
+    }
+
+    .navbar .nav-links {
+      display: flex;
+      gap: 25px;
+    }
+
+    .navbar .nav-links a {
+      color: var(--white);
+      text-decoration: none;
+      font-size: 1.1rem;
+      font-weight: bold;
+      transition: color 0.3s ease;
+      white-space: nowrap;
+    }
+
+    .navbar .nav-links a:hover,
+    .navbar .nav-links a:focus {
+      color: var(--accent);
+      outline: none;
+    }
+
+    h1 {
+      font-size: 3.5rem;
+      font-weight: normal;
+      color: var(--white);
+      text-shadow:
+        0 0 8px var(--white),
+        0 0 16px var(--white),
+        0 0 24px var(--white);
+      filter: brightness(1.6);
+      margin-bottom: 60px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .egg-container {
+      max-width: 800px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+      z-index: 2;
+    }
+
+    .egg {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
+      padding: 25px 30px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      text-align: left;
+      user-select: none;
+      box-shadow: 0 0 15px var(--accent);
+      backdrop-filter: blur(12px);
+    }
+
+    .egg:hover {
+      background: rgba(218, 112, 214, 0.15);
+      box-shadow: 0 0 25px var(--accent);
+    }
+
+    .egg-title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: var(--accent);
+    }
+
+    .egg-description {
+      max-height: 0;
+      overflow: hidden;
+      font-size: 1.15rem;
+      line-height: 1.5;
+      color: var(--white);
+      transition: max-height 0.4s ease, padding 0.4s ease;
+      padding: 0 0;
+    }
+
+    .egg.active .egg-description {
+      max-height: 300px;
+      padding-top: 10px;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2.5rem;
+      }
+      .egg-title {
+        font-size: 1.4rem;
+      }
+      .egg-description {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">
+      <img src="favicon.png" alt="TASS Logo" />
+    </div>
+    <div class="nav-links">
+      <a href="main.html">Home</a>
+      <a href="characters.html">Characters</a>
+      <a href="https://docs.google.com/spreadsheets/d/1jXAAM4CBdqVFGm04pbRnngSnv9gcO6AkKsJNU_UiyoU/edit?gid=964261883#gid=964261883" target="_blank" rel="noopener noreferrer">Leaderboard</a>
+      <a href="archive.html">Archive</a>
+    </div>
+  </nav>
+
+  <h1>📖 The Archives 📖</h1>
+
+  <div class="egg-container">
+    <div class="egg" onclick="toggleEgg(this)">
+      <div class="egg-title">TASS 8</div>
+      <div class="egg-description">
+      https://docs.google.com/document/d/1nAtAWMsZ9BRWC_U5yT5-vbKu_tlIvCqQXBrY7-IaH2c/edit?tab=t.0
+      https://docs.google.com/spreadsheets/d/1ASeGi1rP4JwcGgi-Fytt5jUVpaDctF_hB5i2C3-pLG4/edit?ouid=112223653497586641207&usp=docs_home&ths=true
+      </div>
+    </div>
+
+    <div class="egg" onclick="toggleEgg(this)">
+      <div class="egg-title">TASS 7</div>
+      <div class="egg-description">
+     https://docs.google.com/document/d/1Lm4jzVXQnyxoEsEm2KOaKiA8GuS_3eR4RCETMqS9VNE/edit?tab=t.0
+    https://docs.google.com/spreadsheets/d/1JdfR6_15ubAaJTrMrdi0kdAVuvlEsC1ZCAOBxtgpr2Q/edit?gid=0#gid=0
+    </div>
+
+
+  <script>
+    function toggleEgg(eggElement) {
+      eggElement.classList.toggle('active');
+    }
+  </script>
+</body>
+</html>
