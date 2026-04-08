@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>District 10</title>
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <style>
+    :root {
+      --primary: #7d6f67;
+      --accent: #DA70D6;
+      --black-transparent: rgba(0, 0, 0, 0.3);
+      --white: #ffffff;
+      --glass-border: rgba(255, 255, 255, 0.2);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: url('https://t4.ftcdn.net/jpg/03/06/08/69/360_F_306086982_VCIxBjU1Na1IOhygRspHVo2IV67C1MwN.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: var(--white);
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--black-transparent);
+      z-index: 0;
+    }
+
+    body {
+      position: relative;
+      z-index: 1;
+      padding-top: 120px;
+    }
+
+    /* NAVBAR */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: var(--black-transparent);
+      backdrop-filter: blur(10px);
+      z-index: 100;
+      padding: 10px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-sizing: border-box;
+      border-bottom: 1px solid var(--glass-border);
+    }
+
+    .navbar .logo img {
+      height: 40px;
+      width: auto;
+      display: block;
+    }
+
+    .navbar .nav-links {
+      display: flex;
+      gap: 25px;
+    }
+
+    .navbar .nav-links a {
+      color: var(--white);
+      text-decoration: none;
+      font-size: 1.1rem;
+      font-weight: bold;
+      transition: color 0.3s ease;
+      white-space: nowrap;
+    }
+
+    .navbar .nav-links a:hover,
+    .navbar .nav-links a:focus {
+      color: var(--accent);
+      outline: none;
+    }
+
+    h1, h2 {
+      text-align: center;
+      position: relative;
+      z-index: 1;
+      text-shadow: 0 0 8px var(--accent), 0 0 16px var(--accent);
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 40px;
+      color: var(--accent);
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin-top: 80px;
+      margin-bottom: 30px;
+      color: var(--primary);
+    }
+
+    .card-container {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto 60px;
+      padding: 0 15px;
+    }
+
+    .card {
+      background-color: rgba(125, 111, 103, 0.15);
+      border: 1px solid var(--primary);
+      border-radius: 12px;
+      overflow: hidden;
+      backdrop-filter: blur(10px);
+      text-align: center;
+      width: 100%;
+      max-width: 350px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transform-style: preserve-3d;
+      box-shadow:
+        0 4px 10px rgba(0, 0, 0, 0.3),
+        0 8px 25px rgba(218, 112, 214, 0.2);
+    }
+
+    .card:hover {
+      transform: scale(1.03) rotateX(6deg) rotateY(2deg);
+      box-shadow:
+        0 10px 25px rgba(218, 112, 214, 0.5),
+        0 0 30px rgba(218, 112, 214, 0.25),
+        0 0 10px rgba(255, 255, 255, 0.05) inset;
+    }
+
+    .card img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+      display: block;
+    }
+
+    .card-content {
+      padding: 20px;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover img {
+      transform: translateY(-4px) scale(1.02);
+    }
+
+    .card:hover .card-content {
+      transform: translateY(4px);
+    }
+
+    .card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 8px;
+      color: var(--accent);
+    }
+
+    .card h4 {
+      font-size: 1rem;
+      color: #ccc;
+      margin-bottom: 12px;
+    }
+
+    .card p {
+      font-size: 0.95rem;
+      color: #eee;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+
+    /* Updated darker purple for tags */
+    .tag {
+      background-color: rgba(75, 0, 130, 0.3); /* darker purple with some transparency */
+      border: 1px solid #4b0082; /* indigo/dark purple */
+      color: #DA70D6; /* keeping the accent color */
+      padding: 4px 10px;
+      border-radius: 16px;
+      font-size: 0.75rem;
+      font-weight: bold;
+      text-shadow: 0 0 5px #DA70D6;
+    }
+
+    .leadership-card img {
+      height: 280px;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    .operative-card {
+      max-width: 250px;
+    }
+
+    .operative-card img {
+      height: 220px;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    @media (max-width: 600px) {
+      .leadership-card, .operative-card {
+        width: 90%;
+      }
+      .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px 20px;
+        gap: 10px;
+      }
+      .navbar .nav-links {
+        flex-direction: column;
+        gap: 12px;
+        width: 100%;
+      }
+      .navbar .nav-links a {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">
+      <img src="favicon.png" alt="District 10 Logo" />
+    </div>
+    <div class="nav-links">
+      <a href="main.html">Home</a>
+      <a href="characters.html">Characters</a>
+      <a href="https://docs.google.com/spreadsheets/d/1jXAAM4CBdqVFGm04pbRnngSnv9gcO6AkKsJNU_UiyoU/edit?gid=964261883#gid=964261883" target="_blank" rel="noopener noreferrer">TASS Doc</a>
+      <a href="archive.html">Archive</a>
+    </div>
+  </nav>
+
+  <h1>Members of TASS</h1>
+
+  <!-- Leadership Section -->
+  <h2>Counselors</h2>
+  <div class="card-container">
+    <div class="card leadership-card">
+      <img src="/Images/bharathkanagalraj.png" alt="Commander" />
+      <div class="card-content">
+        <h3>Bharath Kanagal Raj</h3>
+        <h4>Ward Melville High School (10)</h4>
+        <div class="tags">
+          <span class="tag">Dynamic Planet</span>
+        </div>
+        <p>Hello, I'm Bharath! I like tennis, video games, and hanging out with friends. I am going to do Robot Tour, Electric Vehicle, Dynamic Planet, and Rocks & Minerals in Scio next year.</p>
+      </div>
+    </div>
+
+    <div class="card leadership-card">
+      <img src="/Images/zeyuwang.jpg" alt="Deputy" />
+      <div class="card-content">
+        <h3>Zeyu Wang</h3>
+        <h4>Ward Melville High School (10)</h4>
+        <div class="tags">
+          <span class="tag">Water Quality</span>
+        </div>
+        <p>I like eating, sleeping, gardening, idk what else. I do ento, water quality and hovercraft.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Operatives Section -->
+  <h2>Students</h2>
+  <div class="card-container">
+    <div class="card operative-card">
+      <img src="/Images/jameskim.jpg" alt="Member 1" />
+      <div class="card-content">
+        <h3>James Kim</h3>
+        <h4>Homeschool (8)</h4>
+        <div class="tags">
+          <span class="tag">Heredity</span>
+          <span class="tag">Potions & Poisons</span>
+        </div>
+        <p>no</p>
+      </div>
+    </div>
+
+    <div class="card operative-card">
+      <img src="/Images/noahlo.jpg" alt="Member 2" />
+      <div class="card-content">
+        <h3>Noah Lo</h3>
+        <h4>Joel Barlow High School (9)</h4>
+        <div class="tags">
+          <span class="tag">Anatomy & Physiology</span>
+          <span class="tag">Entomology</span>
+          <span class="tag">Rocks & Minerals</span>
+          <span class="tag">Python Programming</span>
+          <span class="tag">Heredity</span>
+        </div>
+        <p>I play the fife, I'm trying to play basketball and other sports, I like reading, and my scio events are still tbd b/c of team arrangements</p>
+      </div>
+    </div>
+
+    <div class="card operative-card">
+      <img src="/Images/chloepark.jpg" alt="Member 3" />
+      <div class="card-content">
+        <h3>Chloe Park</h3>
+        <h4>Plaza Vista Middle School (8)</h4>
+        <div class="tags">
+          <span class="tag">Competitive Science Research</span>
+        </div>
+        <p>I like reading a lot, drawing, and being creative. I only have one course, but if I could have done multiple Codebusters would have been one of them.</p>
+      </div>
+    </div>
+
+    <div class="card operative-card">
+      <img src="/Images/ariellachetnik.jpeg" alt="Member 4" />
+      <div class="card-content">
+        <h3>Ariella Chetnik</h3>
+        <h4>John Read Middle School (7)</h4>
+        <div class="tags">
+          <span class="tag">Anatomy & Physiology</span>
+          <span class="tag">Heredity</span>
+        </div>
+        <p>Hello! I like dance, listening to music, scioly of course, and sciocamp. This coming school year is gonna be my first year doing scioly but I’m so excited for boomilever and maybe crime busters. I LOVE K-pop btw<3.</p>
+      </div>
+    </div>
+
+    <div class="card operative-card">
+      <img src="/Images/kylezheng.jpg" alt="Member 5" />
+      <div class="card-content">
+        <h3>Kyle Zheng</h3>
+        <h4>Great Neck South High School (9)</h4>
+        <div class="tags">
+          <span class="tag">Aerodynamics</span>
+          <span class="tag">Dynamic Planet</span>
+          <span class="tag">Astronomy</span>
+        </div>
+        <p>I live in Great, NY. I enjoy hanging out with friends, video games, reading, writing, and swimming. I've done Science Olympiad since 6th Grade and did Science Bowl this year. I mainly focus on Earth Science and Astronomy in Scioly , but I do like engineering events. I mained all the astro events for the past 3 years (solar and RFTS), did wheeled vehicle my first two years, and did Dynamic planet this year. I've done Sciocamp for 2 years at this point.</p>
+      </div>
+    </div>
+
+    <div class="card operative-card">
+      <img src="/Images/sriharikumariduraivan.jpeg" alt="Member 6" />
+      <div class="card-content">
+        <h3>Srihari Kumariduraivan</h3>
+        <h4>Ward Melville High School (9)</h4>
+        <div class="tags">
+          <span class="tag">Dynamic Planet</span>
+          <span class="tag">Forensics</span>
+        </div>
+        <p>I like to play video games, I like to run, bike, swim. I main in Dynamic Planet, Vehicle events, and Astronomy.</p>
+      </div>
+    </div>
+
+    <div class="card operative-card">
+      <img src="/Images/kylepark.jpg" alt="Member 7" />
+      <div class="card-content">
+        <h3>Kyle Park</h3>
+        <h4>Westpark Elementary School (6)</h4>
+        <div class="tags">
+          <span class="tag">Web development</span>
+          <span class="tag">Codebusters</span>
+          <span class="tag">Python Programming</span>
+          <span class="tag">Engineering & Mechanics</span>
+        </div>
+        <p>I like to program things and my 3 scioly events are Tower, Metric Mastery, and Codebusters. Since I take Website Development class, I can make the website. Also, I have done Scratch for over a year so I might make some of the interactive things too.</p>
+      </div>
+    </div>
+
+    <div class="card operative-card">
+      <img src="/Images/brandonsong.jpeg" alt="Member 8" />
+      <div class="card-content">
+        <h3>Brandon Song</h3>
+        <h4>Robert Cushman Murphy Middle School (8)</h4>
+        <div class="tags">
+          <span class="tag">Codebusters</span>
+          <span class="tag">Python Programming</span>
+        </div>
+        <p>I play two sports volleyball and soccer I also main build events because I just like build tings more than like tests</p>
+      </div>
+    </div>
+
+    <div class="card operative-card">
+      <img src="/Images/alexanderanikeev.jpg" alt="Member 9" />
+      <div class="card-content">
+        <h3>Alexander Anikeev</h3>
+        <h4>I wont go to school. (8)</h4>
+        <div class="tags">
+          <span class="tag">Circut Lab</span>
+          <span class="tag">Machines</span>
+        </div>
+        <p>playing video games optics ,mission ,metric and tower</p>
+      </div>
+    </div>
+
+    <div class="card operative-card">
+      <img src="/Images/kipmayfield.jpg" alt="Member 10" />
+      <div class="card-content">
+        <h3>Kip Mayfield</h3>
+        <h4>City Hill Middle School (8)</h4>
+        <div class="tags">
+          <span class="tag">Website Developement</span>
+          <span class="tag">Codebusters</span>
+          <span class="tag">Python Programming</span>
+        </div>
+        <p>I like to code and thats why I'm doing Python and Web Dev, Duh. But I play basketball and soccer for fun, I've never been on a team for either sport but I did do flag football for 2 seasons.</p>
+      </div>
+    </div>
+
+    <div class="card operative-card">
+      <img src="/Images/eanfreitas.jpeg" alt="Member 11" />
+      <div class="card-content">
+        <h3>Ean Freitas</h3>
+        <h4>Plesantville High School (9)</h4>
+        <div class="tags">
+          <span class="tag">Dynamic Planet</span>
+          <span class="tag">Meteorology</span>
+          <span class="tag">Astronomy</span>
+        </div>
+        <p>I like Earth Science. I also enjoy running, music, skiing, and school.</p>
+      </div>
+    </div>
+
+    <div class="card operative-card">
+      <img src="/Images/keastonhiseh.png" alt="Member 12" />
+      <div class="card-content">
+        <h3>Keaston Hiseh</h3>
+        <h4>Westpark Middle School (6)</h4>
+        <div class="tags">
+          <span class="tag">Codebusters</span>
+          <span class="tag">Aerodynamics</span>
+          <span class="tag">Circut Lab</span>
+          <span class="tag">Machines</span>
+        </div>
+        <p>I like to read. My favorite scioly event is code.</p>
+      </div>
+    </div>
+
+    <div class="card operative-card">
+      <img src="/Images/georgeli.jpg" alt="Member 13" />
+      <div class="card-content">
+        <h3>George Li</h3>
+        <h4>Mason Elementary School (5)</h4>
+        <div class="tags">
+          <span class="tag">Entomology</span>
+          <span class="tag">Aerodynamics</span>
+          <span class="tag">Engineering & Mechanics</span>
+        </div>
+        <p>I like to swim and play video games and I don’t main any scio camp events.</p>
+      </div>
+    </div>
+
+    <div class="card operative-card">
+      <img src="/Images/andywang.png" alt="Member 14" />
+      <div class="card-content">
+        <h3>Andy Wang</h3>
+        <h4>Lakeside Middle School (7)</h4>
+        <div class="tags">
+          <span class="tag">Codebusters</span>
+          <span class="tag">Dynamic Planet</span>
+          <span class="tag">Rocks & Minerals</span>
+          <span class="tag">Meteorology</span>
+        </div>
+        <p>Math, Science</p>
+      </div>
+    </div>
+  
+  </div>
+  <div class="cursor"></div>
+<script>
+  const cursor = document.querySelector('.cursor');
+  window.addEventListener('mousemove', e => {
+    cursor.style.left = e.clientX + 'px';
+    cursor.style.top = e.clientY + 'px';
+  });
+</script>
+</body>
+</html>
